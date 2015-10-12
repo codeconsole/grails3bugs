@@ -15,4 +15,7 @@ Sun Aug 23 12:19:47 PDT 2015
 There was an unexpected error (type=Not Acceptable, status=406).  
 No message available  
 
-
+Solution: 
+add 
+static responseFormats
+to the controller
