@@ -1,21 +1,11 @@
-# Grails 3.0.4 Bug Demonstrations
+# Grails 3.0.8 Bug Demonstrations
 
+Note: this is a freshly created grails 3.0.8 application with the following modifications:
 
-URLMappings.groovy "/cars"(resources: "car")  
+Car.groovy
+CarController.groovy
+CarSpec.groovy
+URLMappings.groovy added: "/cars"(resources: "car")  
   
-[http://localhost:8080/cars] (http://localhost:8080/cars) works fine, BUT  
+[http://localhost:8080/cars] (http://localhost:8080/cars) 
 [http://localhost:8080/cars.json](http://localhost:8080/cars.json) or [http://localhost:8080/cars.xml](http://localhost:8080/cars.xml)  
-  
-Results in a strange:  
-###Whitelabel Error Page
-  
-This application has no explicit mapping for /error, so you are seeing this as a fallback.  
-  
-Sun Aug 23 12:19:47 PDT 2015  
-There was an unexpected error (type=Not Acceptable, status=406).  
-No message available  
-
-Solution: 
-add 
-static responseFormats
-to the controller
