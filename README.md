@@ -35,7 +35,7 @@ modified **User.groovy** (Creates **BUG #2** - requires Gorm >= **5.0.3**)
 	}
 
 
-**BUG #1** - Adding default constraints to application.groovy causes and class that has static column mappings throw an exception at startup
+**BUG #1** - Adding default constraints to application.groovy causes any class that has static column mappings throw an exception at startup
 
 	static mapping = {
 		password column: '`password`'
