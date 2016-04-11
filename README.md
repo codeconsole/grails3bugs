@@ -1,42 +1,50 @@
-# Grails 3.0.8 Bug Demonstrations
+# Grails 3.1.4 Bug Demonstrations
 
-Note: this is a freshly created grails 3.0.8 application with the following modifications:
+Note: this is a freshly created grails 3.1.4 application with the following modifications:
 
-Car.groovy
-CarController.groovy
-CarSpec.groovy
-URLMappings.groovy added: "/cars"(resources: "car")  
-  
-Added security plugin:
-build.gradle added: compile "org.grails.plugins:spring-security-core:3.0.0.M1"
-ran: s2-quickstart example User Role
-Bootstrap.groovy - Created a Car and a User/password test/test
+	grails create-app example
 
-Grail 3 Bug:
+added Spring Security plugin and changed to Gorm 3.0.4 (build.gradle dependency block):
 
-http://localhost:8080/cars.json
+    // force 5.0.4 dependencies
+    compile "org.grails:grails-datastore-simple:5.0.4.RELEASE"
+    compile "org.grails:grails-datastore-core:5.0.4.RELEASE"   
+    compile "org.grails:grails-datastore-gorm:5.0.4.RELEASE" 
+    compile "org.grails:grails-datastore-gorm-support:5.0.4.RELEASE"  
+    compile "org.grails:grails-datastore-gorm-hibernate4:5.0.4.RELEASE" 	
 
-3.0.0 to 3.0.6
-Everything works as expected,
-Page renders fine.
+	compile "org.grails.plugins:spring-security-core:3.0.4" 
+	compile "org.grails.plugins:hibernate4:5.0.4"
 
-3.0.7 to 3.0.8
-Security rule to rest controller completely ignored.
-/cars.json results in a redirect to /login/auth
-logging in with user test/test results in a 403 'Sorry, you're not authorized to view this page.'
+ran the following command to create a User.groovy class
+	s2-quickstart example User Role
 
-Spring Security Bug on index page only on all Grails versions:
+modified generated application.groovy (Creates bug #1 requires Gorm 5.0.4)
 
-	'/':                ['permitAll'],
-	'/error':           ['permitAll'],
-	'/index':           ['permitAll'],
-	'/index.gsp':       ['permitAll'],
+	grails.gorm.default.constraints = { 
+ 	   '*'(nullable: true) 
+	} 
 
-Index rules not honored.  Both / and /index result in a redirect to /login/auth
-http://localhost:8080/ 
-http://localhost:8080/index
+modified User.groovy (Created bug #2 - requres Gorm >= 5.0.3) 
 
-To demonstrate the bug, use run-app.
-To demonstrate the fix, uncomment
-// compile "org.grails:grails-core:3.0.6"  
-in build.gradle (or change 3.0.8 to 3.0.6 in gradle.properties)
+	static constraints = {
+		enabled() // added this
+		password blank: false, password: true
+		username blank: false, unique: true
+	}
+
+
+Bug #1 - Adding default constraints to application.groovy causes and class that has static column mappings throw an exception at startup
+
+	static mapping = {
+		password column: '`password`'
+	}
+
+	... nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: example.User column: password (should be mapped with insert="false" update="false")
+		at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
+
+
+
+Bug #2 - Empty constraints() cause the following startup ERRORs:
+
+	ERROR org.grails.orm.hibernate.cfg.HibernateMappingBuilder - ORM Mapping Invalid: Specified config option [enabled] does not exist for class [example.User]!
