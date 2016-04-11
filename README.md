@@ -4,7 +4,7 @@ Note: this is a freshly created **Grails 3.1.4** application with the following 
 
 	grails create-app example
 
-added Spring Security plugin and changed to Gorm 3.0.4 (**build.gradle** dependency block):
+added Spring Security plugin and changed Gorm to  **5.0.4 (**build.gradle** dependency block):
 
     // force 5.0.4 dependencies
     compile "org.grails:grails-datastore-simple:5.0.4.RELEASE"
@@ -20,13 +20,13 @@ ran the following command to create a **User.groovy** class:
 
 	s2-quickstart example User Role
 
-modified generated **application.groovy** (Creates **BUG #1** requires Gorm 5.0.4)
+modified generated **application.groovy** (Creates **BUG #1** requires Gorm **5.0.4**)
 
 	grails.gorm.default.constraints = { 
  	   '*'(nullable: true) 
 	} 
 
-modified **User.groovy** (Creates **BUG #2** - requres Gorm >= 5.0.3) 
+modified **User.groovy** (Creates **BUG #2** - requires Gorm >= **5.0.3**) 
 
 	static constraints = {
 		enabled() // added this
@@ -35,7 +35,7 @@ modified **User.groovy** (Creates **BUG #2** - requres Gorm >= 5.0.3)
 	}
 
 
-Bug #1 - Adding default constraints to application.groovy causes and class that has static column mappings throw an exception at startup
+**BUG #1** - Adding default constraints to application.groovy causes and class that has static column mappings throw an exception at startup
 
 	static mapping = {
 		password column: '`password`'
@@ -49,7 +49,9 @@ References:
 https://github.com/grails/grails-data-mapping/issues/671
 
 
-Bug #2 - Empty constraints() cause the following startup ERRORs:
+
+
+**BUG #2** - Empty constraints() cause the following startup ERRORs:
 
 	ERROR org.grails.orm.hibernate.cfg.HibernateMappingBuilder - ORM Mapping Invalid: Specified config option [enabled] does not exist for class [example.User]!
 
