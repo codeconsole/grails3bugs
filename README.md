@@ -46,6 +46,7 @@ modified **User.groovy** (Creates **BUG #2** - requires Gorm >= **5.0.3**)
 
 References:
 
+https://github.com/grails/grails-data-mapping/issues/695
 https://github.com/grails/grails-data-mapping/issues/671
 
 
@@ -55,5 +56,8 @@ https://github.com/grails/grails-data-mapping/issues/671
 
 	ERROR org.grails.orm.hibernate.cfg.HibernateMappingBuilder - ORM Mapping Invalid: Specified config option [enabled] does not exist for class [example.User]!
 
+References:
+
+https://github.com/grails/grails-data-mapping/issues/696
 
 
