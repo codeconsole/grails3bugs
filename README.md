@@ -1,20 +1,12 @@
-# Grails 3.1.4 Bug Demonstrations
+# Grails 3.1.5 Bug Demonstrations
 
-Note: this is a freshly created **Grails 3.1.4** application with the following modifications:
+Note: this is a freshly created **Grails 3.1.5** application with the following modifications:
 
 	grails create-app example
 
-added Spring Security plugin and changed Gorm to  **5.0.4 (**build.gradle** dependency block):
-
-    // force 5.0.4 dependencies
-    compile "org.grails:grails-datastore-simple:5.0.4.RELEASE"
-    compile "org.grails:grails-datastore-core:5.0.4.RELEASE"   
-    compile "org.grails:grails-datastore-gorm:5.0.4.RELEASE" 
-    compile "org.grails:grails-datastore-gorm-support:5.0.4.RELEASE"  
-    compile "org.grails:grails-datastore-gorm-hibernate4:5.0.4.RELEASE" 	
+added Spring Security plugin (**build.gradle** dependency block):
 
 	compile "org.grails.plugins:spring-security-core:3.0.4" 
-	compile "org.grails.plugins:hibernate4:5.0.4"
 
 ran the following command to create a **User.groovy** class:
 
