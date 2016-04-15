@@ -21,7 +21,7 @@ modified generated **application.groovy** (Creates **BUG #1** requires Gorm **5.
 modified **User.groovy** (Creates **BUG #2** - requires Gorm >= **5.0.3**) 
 
 	static constraints = {
-		enabled() // added this
+		enabled() // added this. Empty constrains are used for scaffolding display order.
 		password blank: false, password: true
 		username blank: false, unique: true
 	}
