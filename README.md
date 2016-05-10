@@ -40,5 +40,6 @@ Click the button "Demonstrate Bug" with the Chrome console open and view the Net
 Notice that allowedMethods is ignored.
 
 References:
+https://github.com/grails/grails-core/issues/9926
 
     
