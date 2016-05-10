@@ -1,6 +1,6 @@
-# Grails 3.1.5 Bug Demonstrations
+# Grails 3.1.6 Bug Demonstrations
 
-Note: this is a freshly created **Grails 3.1.5** application with the following modifications:
+Note: this is a freshly created **Grails 3.1.6** application with the following modifications:
 
 	grails create-app example
 
@@ -12,34 +12,12 @@ ran the following command to create a **User.groovy** class:
 
 	s2-quickstart example User Role
 
-modified generated **application.groovy** (Creates **BUG #1** requires Gorm **5.0.4**)
+**BUG #2** 
+modified generated **UrlMappings.groovy** 
 
-	grails.gorm.default.constraints = { 
- 	   '*'(nullable: true) 
-	} 
-
-modified **User.groovy** (Creates **BUG #2** - requires Gorm >= **5.0.3**) 
-
-	static constraints = {
-		enabled() // added this. Empty constrains are used for scaffolding display order.
-		password blank: false, password: true
-		username blank: false, unique: true
-	}
+	post “/users/$id(.$format)?"(controller:”user", action:"update”)
 
 
-**BUG #1** - Adding default constraints to application.groovy causes any class that has static column mappings throw an exception at startup
-
-	static mapping = {
-		password column: '`password`'
-	}
-
-	... nested exception is org.hibernate.MappingException: Repeated column in mapping for entity: example.User column: password (should be mapped with insert="false" update="false")
-		at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:553)
-
-References:
-
-https://github.com/grails/grails-data-mapping/issues/695
-https://github.com/grails/grails-data-mapping/issues/671
 
 
 

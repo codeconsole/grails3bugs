@@ -1,8 +1,3 @@
-grails.gorm.default.constraints = { 
-    '*'(nullable: true) 
-} 
-
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'example.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'example.UserRole'
@@ -10,8 +5,8 @@ grails.plugin.springsecurity.authority.className = 'example.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],
     [pattern: '/register/**',    access: ['permitAll']],    
-    [pattern: '/user/**',        access: ['isAuthenticated()']],	
-    [pattern: '/user/**',        access: ['isAuthenticated()']],	
+    [pattern: '/users/**',       access: ['permitAll']],	
+    [pattern: '/user/**',        access: ['permitAll']],	
 	[pattern: '/error',          access: ['permitAll']],
 	[pattern: '/index',          access: ['permitAll']],
 	[pattern: '/index.gsp',      access: ['permitAll']],

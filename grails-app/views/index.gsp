@@ -55,6 +55,13 @@
         <section class="row colset-2-its">
             <h1>Welcome to Grails</h1>
 
+            <br /><br />
+            <div class="container text-center">
+                <form action='/users/1.json' method="post">
+                    <input type="submit" value="Demonstrate Bug" class="btn btn-default" />
+                </form>
+            </div><br /><br />
+
             <p>
                 Congratulations, you have successfully started your first Grails application! At the moment
                 this is the default page, feel free to modify it to either redirect to a controller or display

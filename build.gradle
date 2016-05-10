@@ -8,9 +8,8 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.7.4"
-        // classpath "org.grails.plugins:hibernate4:5.0.2"
-        classpath "org.grails.plugins:hibernate4:5.0.4"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.8.2"
+        classpath "org.grails.plugins:hibernate4:5.0.5"
     }
 }
 
@@ -55,7 +54,8 @@ dependencies {
     compile "org.hibernate:hibernate-ehcache"
     console "org.grails:grails-console"
     compile "org.grails.plugins:spring-security-core:3.0.4"    
-    profile "org.grails.profiles:web:3.1.5"
+    profile "org.grails.profiles:web:3.1.6"
+    runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.8.2"
     runtime "org.grails.plugins:asset-pipeline"
     runtime "com.h2database:h2"
     testCompile "org.grails:grails-plugin-testing"
