@@ -51,15 +51,14 @@
         </div>
     </div>
 
-    <div id="content" role="main">
+    <div id="content" role="main" ng-app="demoApp">
         <section class="row colset-2-its">
             <h1>Welcome to Grails</h1>
 
+
             <br /><br />
-            <div class="container text-center">
-                <form action='/users/1.json' method="post">
-                    <input type="submit" value="Demonstrate Bug" class="btn btn-default" />
-                </form>
+            <div id="DemoCtrl" ng-controller="DemoCtrl" class="container text-center">
+                <input type="submit" value="Demonstrate Bug" class="btn btn-default" ng-click="save()" />
             </div><br /><br />
 
             <p>

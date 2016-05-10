@@ -12,22 +12,12 @@ ran the following command to create a **User.groovy** class:
 
 	s2-quickstart example User Role
 
-**BUG #2** 
+**BUG** 
 modified generated **UrlMappings.groovy** 
 
-	post “/users/$id(.$format)?"(controller:”user", action:"update”)
+	"/users"(resources: "user") {}
 
-
-
-
-
-
-**BUG #2** - Empty constraints() cause the following startup ERRORs:
-
-	ERROR org.grails.orm.hibernate.cfg.HibernateMappingBuilder - ORM Mapping Invalid: Specified config option [enabled] does not exist for class [example.User]!
 
 References:
-
-https://github.com/grails/grails-data-mapping/issues/696
 
 

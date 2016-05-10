@@ -9,9 +9,7 @@ class UrlMappings {
             }
         }
 
-        get "/users(.$format)?"(controller:"user", action:"index")
-        get "/users/$id(.$format)?"(controller:"user", action:"show")
-        post "/users/$id(.$format)?"(controller:"user", action:"update")
+        "/users"(resources: "user") {}
 
         "/"(view:"/index")
         "500"(view:'/error')
