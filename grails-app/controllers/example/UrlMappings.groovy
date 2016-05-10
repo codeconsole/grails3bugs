@@ -9,7 +9,8 @@ class UrlMappings {
             }
         }
 
-        "/users"(resources: "user") {}
+        "/users"(resources:'user')
+        post "/users/$id"(controller:"user", action:"update")
 
         "/"(view:"/index")
         "500"(view:'/error')
