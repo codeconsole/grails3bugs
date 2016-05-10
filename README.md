@@ -25,12 +25,16 @@ created **UserController.groovy**
     static allowedMethods = [save: "POST", update: ["POST", "PUT"], delete: "DELETE"]
 
 modified **application.js** 
+
 modified **index.gsp** 
+
 added **/grails-app/assets/bower_components** (latest angularjs) 
 
 
 To demonstrate the bug, visit http://localhost:8080/
+
 Click the button "Demonstrate Bug" with the Chrome console open and view the Network tab
+
     POST http://localhost:8080/users/1.json 405 (Method Not Allowed)
 
 Notice that allowedMethods is ignored.
