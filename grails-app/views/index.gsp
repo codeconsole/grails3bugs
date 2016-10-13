@@ -51,15 +51,9 @@
         </div>
     </div>
 
-    <div id="content" role="main" ng-app="demoApp">
+    <div id="content" role="main">
         <section class="row colset-2-its">
             <h1>Welcome to Grails</h1>
-
-
-            <br /><br />
-            <div id="DemoCtrl" ng-controller="DemoCtrl" class="container text-center">
-                <input type="submit" value="Demonstrate Bug" class="btn btn-default" ng-click="save()" />
-            </div><br /><br />
 
             <p>
                 Congratulations, you have successfully started your first Grails application! At the moment

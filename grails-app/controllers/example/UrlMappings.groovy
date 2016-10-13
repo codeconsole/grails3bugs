@@ -8,10 +8,7 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-
-        "/users"(resources:'user')
-        post "/users/$id"(controller:"user", action:"update")
-
+        "/sets"(resources: "flashCardSet") {}   
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')

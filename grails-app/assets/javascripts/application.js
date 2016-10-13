@@ -7,11 +7,8 @@
 //
 //= require jquery-2.2.0.min
 //= require bootstrap
-//= require angular/angular
-//= require angular-resource/angular-resource
-// require_tree .
+//= require_tree .
 //= require_self
-
 
 if (typeof jQuery !== 'undefined') {
     (function($) {
@@ -22,18 +19,3 @@ if (typeof jQuery !== 'undefined') {
         });
     })(jQuery);
 }
-
-
-
-
-var demoApp = angular.module('demoApp', ['ngResource'])
-
-demoApp.controller('DemoCtrl', function($scope, $resource) {
-    var User = $resource('/users/:id.json')
-    $scope.user = User.get({id:1})
-    $scope.user.username = 'grails'
-
-    $scope.save = function(){
-        $scope.user.$save({id:$scope.user.id})
-    }
-})
